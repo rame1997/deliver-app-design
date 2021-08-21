@@ -16,4 +16,5 @@ class AppColors {
   static const TitleOrder= Color(0xFFB192FC);
   static const SubTile= Color(0xFF898692);
   static const Contanier_ListTile= Color(0xFFF8F7FB);
+  static const Api_Key= 'AIzaSyAk3nhYxzXA_SgowRWpsHp5Z6us9UaXDMY';
 }

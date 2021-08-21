@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:we_deliver/utilities/app_colors.dart';
 import 'package:we_deliver/utilities/size_config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +11,7 @@ import 'package:we_deliver/utilities/widget/contanir_text_filed.dart';
 import 'dart:math' as math;
 import 'package:we_deliver/model/Parcel.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -18,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late var _currentPosition;
+  late String _currentAddress;
+
   late TextEditingController location;
   late TextEditingController name;
   late TextEditingController mobileNumber;
@@ -26,10 +31,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late TextEditingController notes;
   late TabController tabControllerParcel;
   late TabController tabControllerPay= TabController(length: 2, vsync: this);
-  List<String> parcel_size =Parcel().parcel;
   @override
   void initState() {
     // TODO: implement initState
+    // _getCurrentLocation();
     tabControllerPay = TabController(length: 2, vsync: this);
     location = TextEditingController();
     name = TextEditingController();
@@ -503,5 +508,13 @@ indicatorPadding:EdgeInsets.fromLTRB(0, 5, 0, 5) ,
                   )
             ]))));
   }
+  // _getCurrentLocation() async {
+  //
+  //  var posiation= await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  //  var lastPosiation=await Geolocator.getLastKnownPosition();
+  //  setState(() {
+  //    location.text="${lastPosiation.locality}, ${lastPosiation.postalCode}, ${lastPosiation.country}";
+  //  });
+  // }
 }
 
